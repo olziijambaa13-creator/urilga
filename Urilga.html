@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урилга</title>
+<style>
+    :root{
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --accent: #1e73ff;
+    --muted: #6b7280;
+    }
+    *{box-sizing:border-box}
+    html,body{
+        height:100%;
+        margin:0;
+        font-family:Inter, Roboto, "Noto Sans", Arial, sans-serif;
+        background:var(--bg);
+        color:#111
+    }
+    .center{
+        min-height:100vh;
+        display:flex;align-items:center;
+        justify-content:center;
+        padding:20px
+    }
+    .card{
+        background:var(--card);
+        padding:22px;
+        border-radius:12px;
+        box-shadow:0 8px 30px rgba(12,18,30,.06);
+        max-width:640px;
+        width:100%
+    }
+    h1{
+        margin:0 0 6px;
+        font-size:20px
+    }
+    label{
+        display:block;
+        margin-top:12px;
+        font-weight:600;
+        font-size:13px
+    }
+    input[type="text"]{
+        width:100%;
+        padding:10px 12px;
+        margin-top:8px;
+        border:1px solid #e6e9ef;
+        border-radius:10px;
+        font-size:15px
+    }
+    .row{
+        display:flex;
+        gap:10px;
+        margin-top:18px;
+        align-items:center
+    }
+    .btn{
+        background:var(--accent);
+        color:white;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-weight:700
+    }
+    .btn.ghost{
+        background:transparent;
+        color:var(--accent);
+        border:1px solid rgba(30,115,255,.12)
+    }
+    .note{font-size:13px;
+        color:var(--muted);
+        margin-top:10px
+    }
+    body{
+        margin:0;
+        padding:0;
+        background:#f2f4f8;
+        font-family:Arial, sans-serif;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    /* Envelope */
+    .envelope{
+        width:280px;
+        height:180px;
+        background:#e2e0dc;
+        position:relative;
+        cursor:pointer;
+        transition:0.4s;
+        box-shadow:0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .envelope:before{
+        content:"";
+        width:0; height:0;
+        border-left:140px solid transparent;
+        border-right:140px solid transparent;
+        border-bottom:90px solid #d5d1ca;
+        position:absolute;
+        top:0; left:0;
+    }
+
+    .envelope:after{
+        content:"Шинэ жилийн урилга";
+        position:absolute;
+        bottom:15px;
+        width:100%;
+        text-align:center;
+        font-size:15px;
+        color:#555;
+    }
+
+    /* Invitation card */
+    .card{
+        width:280px;
+        background:white;
+        padding:20px;
+        border-radius:12px;
+        box-shadow:0 12px 30px rgba(0,0,0,0.18);
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%) scale(0.3);
+        opacity:0;
+        transition:0.45s ease;
+        pointer-events:none;
+    }
+
+    .card.show{
+        transform:translate(-50%, -50%) scale(1);
+        opacity:1;
+        pointer-events:auto;
+    }
+
+    h1{
+        margin-top:0;
+        font-size:20px;
+        color:#0b7dda;
+    }
+
+    .date{
+        color:#444;
+        margin-bottom:12px;
+        font-size:14px;
+    }
+
+    .info{
+        list-style:none;
+        padding:0;
+        margin:0;
+        color:#333;
+        line-height:1.6;
+        font-size:15px;
+    }
+
+    .close{
+        margin-top:15px;
+        background:#0b7dda;
+        color:white;
+        padding:8px 14px;
+        border-radius:8px;
+        display:inline-block;
+        text-decoration:none;
+    }
+</style>
+</head>
+<body>
+
+    <!-- LOGIN PAGE -->
+    
+    <section id="page-login" class="card page active" aria-labelledby="login-title">
+    <h1 id="login-title">Нэвтрэх</h1>
+    <form id="loginForm" autocomplete="off">
+        <label for="surname">Нэр</label>
+        <input id="surname" name="surname" type="text" placeholder="Өөрийн нэрээ оруулна уу" required />
+        <div class="row">
+        <button type="submit" class="btn">Дараагийн хуудас</button>
+        <button type="button" id="clearBtn" class="btn ghost">Цэвэрлэх</button>
+        </div>
+        <p class="note"> </p>
+        
+    </form>
+    </section>
+<div class="envelope" onclick="openInvite()"></div>
+
+<div class="card" id="inviteCard">
+    <h1>B soft компанийн Шинэ Жилийн Урилга</h1>
+    <p class="date">2025.12.16 — </p>
+    <p>Эрхэм хүндэт B soft  компанийн ажилтан таньд 2025 оны 12 сарын 16 нд болох шинэ жилийн баярт хүрэлцэн ирэх урилга илгээж байна.</p>
+    <ul class="info">
+        <li>📍 Байршил:Tuushin hotel 25 Давхарт</li>
+        <li>📞 Утас: 97177788</li>
+    </ul>
+
+    <a class="close" href="#" onclick="closeInvite()">Хаах</a>
+</div>
+
+<script>
+function openInvite(){
+    document.getElementById("inviteCard").classList.add("show");
+}
+
+function closeInvite(){
+    document.getElementById("inviteCard").classList.remove("show");
+}
+</script>
+
+</body>
+</html>
